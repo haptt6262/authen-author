@@ -5,10 +5,19 @@ const privateKey = "thuhadaywertyuioghjhhjhhjjjj";
 const verifyToken = jwtValidator({
     secret: privateKey,
     algorithms: ["HS256"],
-});
-
+    getToken: function fromHeader(req) {
+        if (
+            req.headers.authorization &&
+            req.headers.authorization.split(" ")[0] === "Bearer"
+        ) {
+            console.log("token received: ", req.headers.authorization.split(" ")[1])
+            return req.headers.authorization.split(" ")[1];
+        }
+        return null;
+    }
+})
 let isAdmin = (req, res, next) => {
-    console.log(req.auth);
+    // console.log("role: ", req.auth);
     if (req.auth && req.auth.role === 'admin') {
         return next();
     }

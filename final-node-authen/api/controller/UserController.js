@@ -12,9 +12,8 @@ exports.getUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     try {
         const id = req.params.id
-        console.log("id: ", id);
         const username = req.body.username
-        await UserModel.findByIdAndUpdate(id, { username: username }, { new: true })
+        const userUpdate = await UserModel.findByIdAndUpdate(id, { username: username }, { new: true })
         res.json({ message: 'success' })
     } catch (error) {
         res.send({ error: error.message })
@@ -23,6 +22,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         const id = req.params.id
+        console.log("user delete: ", id)
         await UserModel.findByIdAndDelete(id)
         res.json({ message: 'success' })
     } catch (error) {

@@ -10,13 +10,12 @@ function generateToken(payload) {
     return jwt.sign(payload, privateKey, { expiresIn: '1h' })
 }
 exports.login = async (req, res) => {
-    const { username, password } = req.body
     try {
+        const { username, password } = req.body
         const existAcc = await UserModel.findOne({ username: username }).populate({
             path: "roles",
             select: "-__v"
         })
-        console.log("acc", existAcc.roles.role);
         if (!existAcc) {
             throw 'Account is not found!'
         } else {
