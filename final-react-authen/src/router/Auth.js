@@ -1,7 +1,8 @@
 import { Fragment, useEffect } from "react";
 import { useLocation, BrowserHistory } from "react-router-dom";
 import { createBrowserHistory } from "history";
-
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import { BASE_URL } from "../container"
 
 const Auth = ({ children }) => {
     const location = useLocation();
@@ -17,9 +18,14 @@ const Auth = ({ children }) => {
             }
         } else {
             if (staticPagePath.includes(location.pathname) === true) {
-                // window.location.href = "http://localhost:3000/home"
-                console.log(history, 'doi haaaaaaaaaaaaaaaaaaaaaaa');
+                let path = location.href
+                let index = BASE_URL.length
+                // let route = path.slice(index)
+                console.log(index, location.href);
 
+
+
+                // window.location.href = `${BASE_URL}+${path.slice(index)}`
             }
             location.href = "http://localhost:3000/home"
         }

@@ -10,7 +10,6 @@ function generateToken(payload) {
     return jwt.sign(payload, privateKey, { expiresIn: '1h' })
 }
 exports.login = async (req, res) => {
-    console.log(req, "doi haaaaaaaaaaaaaaaaaaaaaaaa");
     try {
         const { username, password } = req.body
         const existAcc = await UserModel.findOne({ username: username }).populate({

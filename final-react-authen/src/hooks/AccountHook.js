@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { AccountActions } from '../actions'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 export const useAccount = () => {
     const dispatch = useDispatch()
