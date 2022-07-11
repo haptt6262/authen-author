@@ -35,6 +35,7 @@ const RegisterComponent = () => {
     const handleSubmit = () => {
         handleRegister({ username: username, password: password })
     }
+
     return (
         <div>
             <div><input placeholder="username" onChange={handleUsername} /></div>

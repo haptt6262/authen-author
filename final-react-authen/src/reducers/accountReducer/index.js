@@ -6,11 +6,12 @@ const INITIAL_STATE = {
     isFetching: false,
     isError: false,
     message: '',
+    status: ''
 }
 
 export default function accountReducer(state = INITIAL_STATE, { type, payload }) {
     console.log('type', type)
-    console.log('payload', payload)
+    console.log('payload in reducer:', payload)
     switch (type) {
         case AccountTypes.LOGIN_REQUEST:
             return {
@@ -46,7 +47,8 @@ export default function accountReducer(state = INITIAL_STATE, { type, payload })
                 ...state,
                 isFetching: false,
                 // listUser: payload.listUser,
-                isError: false
+                isError: false,
+                status: payload.status
             }
         case AccountTypes.REGISTER_FAILURE:
             return {

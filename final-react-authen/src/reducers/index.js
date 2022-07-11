@@ -6,5 +6,5 @@ import userInstanceReducer from './userReducer/item.instance.reducer'
 export default combineReducers({
     userCollection: userCollectionReducer,
     userInstance: userInstanceReducer,
-    account: accountReducer
+    account: accountReducer,
 })

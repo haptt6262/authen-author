@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useUser } from '../hooks'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
     const {
@@ -10,7 +11,7 @@ export default function Home() {
         handleFetchList,
         updateUser, deleteUser, userToAdmin
     } = useUser()
-
+    const navigate = useNavigate()
     const [data, setData] = useState({
         id: '',
         username: '',
@@ -68,12 +69,18 @@ export default function Home() {
             </tr>
         )
     })
+    const handleLogout = () => {
+        window.localStorage.removeItem('auth-token')
+        window.localStorage.removeItem('role')
+        navigate('/login')
+    }
 
     return (
         <>
             <div>Homepage</div>
             <input value={data.username} onChange={(e) => setData({ ...data, username: e.target.value })} />
             <button onClick={() => { updateUser(data) }}>UPDATE</button>
+            <button onClick={handleLogout}>Log out </button>
             <table>
                 <thead>
                     <tr>

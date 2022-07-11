@@ -11,7 +11,7 @@ export default function Navbar() {
                         <Route path='/login' element={<pages.LoginPage />} />
                         <Route path='/home' element={<pages.UserPage />} />
                         <Route path='/register' element={<pages.RegisterPage />} />
-                        {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
+                        <Route path="*" element={<Navigate to="/login" replace />} />
                     </Routes>
                 </Auth>
             </BrowserRouter>
